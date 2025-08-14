@@ -30,6 +30,9 @@ next-env.d.ts
 dist/
 dist
 
+# Allow frontend build directory
+!/frontend/build
+
 # Environment files (comprehensive coverage)
 
 *token.json*
