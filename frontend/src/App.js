@@ -33,6 +33,8 @@ function App() {
     const savedAuth = localStorage.getItem('isAdmin');
     if (savedAuth === 'true') {
       setIsLoggedIn(true);
+      // Загружаем данные администратора, если пользователь уже авторизован
+      loadAdminData();
     }
   }, []);
 
