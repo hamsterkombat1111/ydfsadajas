@@ -14,6 +14,9 @@ from pathlib import Path
 DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://user:password@localhost/prankvz")
 CORS_ORIGINS = os.getenv("CORS_ORIGINS", "*")
 
+# Build path for React static files
+BUILD_DIR = Path(__file__).parent.parent / "frontend" / "build"
+
 # Initialize FastAPI
 app = FastAPI(title="PrankVZ API", version="1.0.0")
 
