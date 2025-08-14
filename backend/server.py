@@ -251,6 +251,25 @@ async def startup_event():
     except Exception as e:
         print(f"Startup error: {e}")
 
+# Mount static files - serve React build files
+if BUILD_DIR.exists():
+    app.mount("/static", StaticFiles(directory=str(BUILD_DIR / "static")), name="static")
+
+# Serve React app for all non-API routes
+@app.get("/{full_path:path}")
+async def serve_react_app(full_path: str):
+    """Serve React app for all routes except API routes"""
+    # Skip API routes
+    if full_path.startswith("api/"):
+        raise HTTPException(status_code=404, detail="API endpoint not found")
+    
+    # Serve index.html for all other routes (React Router will handle routing)
+    index_file = BUILD_DIR / "index.html"
+    if index_file.exists():
+        return FileResponse(str(index_file))
+    else:
+        raise HTTPException(status_code=404, detail="React build not found")
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8001)
