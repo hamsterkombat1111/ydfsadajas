@@ -64,7 +64,7 @@ function App() {
         title: "Успешно!",
         description: "Вы вошли как администратор",
       });
-      loadAdminData();
+      // loadAdminData() будет вызвана автоматически через useEffect
     } else {
       toast({
         title: "Ошибка",
