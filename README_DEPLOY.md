@@ -23,7 +23,7 @@
 
 ### ⚠️ Build Command (ОБЯЗАТЕЛЬНО ОБНОВИТЬ):
 ```bash
-chmod +x start.sh
+cd backend && pip install -r requirements.txt
 ```
 
 ### ⚠️ Start Command (ОБЯЗАТЕЛЬНО ОБНОВИТЬ):
