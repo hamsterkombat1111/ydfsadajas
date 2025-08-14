@@ -163,7 +163,7 @@ function App() {
     try {
       await fetch(`${BACKEND_URL}/api/admins/${id}`, { method: 'DELETE' });
       toast({ title: "Администратор удален!" });
-      loadAdminData();
+      loadPublicData(); // Обновляем список администраторов для всех
     } catch (error) {
       toast({
         title: "Ошибка",
