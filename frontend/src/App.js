@@ -124,7 +124,7 @@ function App() {
       if (response.ok) {
         toast({ title: "Администратор добавлен!" });
         setNewAdmin({ name: '', telegram_id: '' });
-        loadAdminData();
+        loadPublicData(); // Обновляем список администраторов для всех
       }
     } catch (error) {
       toast({
