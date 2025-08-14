@@ -83,15 +83,24 @@ function App() {
     });
   };
 
+  // Загружаем публичные данные (список администраторов)
+  const loadPublicData = async () => {
+    try {
+      const adminsRes = await fetch(`${BACKEND_URL}/api/admins`);
+      setAdmins(await adminsRes.json());
+    } catch (error) {
+      console.error('Failed to load public data:', error);
+    }
+  };
+
+  // Загружаем данные только для авторизованных админов
   const loadAdminData = async () => {
     try {
-      const [adminsRes, visitsRes, ipsRes] = await Promise.all([
-        fetch(`${BACKEND_URL}/api/admins`),
+      const [visitsRes, ipsRes] = await Promise.all([
         fetch(`${BACKEND_URL}/api/visits`),
         fetch(`${BACKEND_URL}/api/blocked-ips`)
       ]);
       
-      setAdmins(await adminsRes.json());
       setVisits(await visitsRes.json());
       setBlockedIps(await ipsRes.json());
     } catch (error) {
