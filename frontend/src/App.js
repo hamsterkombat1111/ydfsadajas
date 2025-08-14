@@ -33,10 +33,15 @@ function App() {
     const savedAuth = localStorage.getItem('isAdmin');
     if (savedAuth === 'true') {
       setIsLoggedIn(true);
-      // Загружаем данные администратора, если пользователь уже авторизован
-      loadAdminData();
     }
   }, []);
+
+  // Загружаем данные администратора при изменении статуса авторизации
+  useEffect(() => {
+    if (isLoggedIn) {
+      loadAdminData();
+    }
+  }, [isLoggedIn]);
 
   const logVisit = async () => {
     try {
