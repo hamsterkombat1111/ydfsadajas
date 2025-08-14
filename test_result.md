@@ -101,3 +101,68 @@
 #====================================================================================================
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
+
+user_problem_statement: "Пользователь попросил обновить PrankVZ приложение для работы с PostgreSQL вместо MongoDB и улучшить дизайн интерфейса"
+
+backend:
+  - task: "Migration from MongoDB to PostgreSQL"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py, /app/backend/database.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: "NA"
+        agent: "main"  
+        comment: "Replaced MongoDB motor with PostgreSQL SQLAlchemy. Created new database.py with models for Visit, BlockedIP, TelegramAdmin. Updated server.py to use SQLAlchemy ORM instead of MongoDB operations."
+      - working: true
+        agent: "testing"
+        comment: "✅ MIGRATION SUCCESSFUL: Installed PostgreSQL, created database 'prankvz' with user credentials, updated backend/.env with DATABASE_URL, fixed middleware database session handling. All 13 API endpoints tested and working: health check, visit logging, admin management (CRUD), IP blocking/unblocking. Database tables created correctly (visits, blocked_ips, telegram_admins). Sample admins inserted successfully. IP blocking middleware working with proper 403 responses."
+        
+  - task: "Update dependencies for PostgreSQL"
+    implemented: true
+    working: true
+    file: "/app/backend/requirements.txt"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Updated requirements.txt to include psycopg2-binary, sqlalchemy, alembic. Removed motor and pymongo dependencies."
+      - working: true
+        agent: "testing"
+        comment: "✅ DEPENDENCIES VERIFIED: All PostgreSQL dependencies (psycopg2-binary==2.9.7, sqlalchemy==2.0.23, alembic==1.12.1) installed and working correctly. Backend starts without dependency errors."
+
+frontend:
+  - task: "Improve UI design and layout"
+    implemented: true
+    working: false  # needs testing
+    file: "/app/frontend/src/App.css"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Enhanced CSS layout - increased max-width for content, improved spacing, larger text sizes, better button sizing, improved responsive design. Made info card more prominent and visually appealing."
+
+metadata:
+  created_by: "main_agent"
+  version: "2.0"
+  test_sequence: 2
+  run_ui: false
+
+test_plan:
+  current_focus:
+    - "Improve UI design and layout"
+  stuck_tasks: []
+  test_all: false
+  test_priority: "high_first"
+
+agent_communication:
+  - agent: "main"
+    message: "Completed migration from MongoDB to PostgreSQL and improved UI design. Ready for backend testing to verify database operations work correctly with new PostgreSQL setup."
+  - agent: "testing"
+    message: "✅ BACKEND MIGRATION FULLY TESTED AND WORKING: PostgreSQL migration completed successfully. All backend functionality verified: 1) PostgreSQL installed and configured 2) Database 'prankvz' created with proper user credentials 3) All 3 database tables created (visits, blocked_ips, telegram_admins) 4) All 13 API endpoints working perfectly 5) Sample data inserted correctly 6) IP blocking middleware functioning with proper 403 responses 7) CRUD operations for visits, admins, and blocked IPs all working 8) Error handling working correctly (404s, 400s for duplicates) 9) Database persistence verified. Backend is production-ready with PostgreSQL."
