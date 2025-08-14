@@ -624,8 +624,8 @@ input::placeholder, textarea::placeholder {
   
   .tab-trigger {
     flex: 1 1 calc(50% - 0.25rem);
-    padding: 1rem 0.5rem;
-    font-size: 0.9rem;
+    padding: 0.8rem 0.5rem;
+    font-size: 0.85rem;
   }
   
   .buttons-grid {
@@ -655,17 +655,22 @@ input::placeholder, textarea::placeholder {
   }
   
   .card-title {
-    font-size: 2rem;
+    font-size: 1.8rem;
+    text-align: center;
   }
   
   .info-text {
     font-size: 1.1rem;
+    padding: 0 1rem;
+    text-align: center;
   }
   
   .telegram-button {
     padding: 1rem 2rem;
     font-size: 1rem;
     min-width: 250px;
+    display: block;
+    margin: 0 auto;
   }
   
   .popup-trigger-button {
@@ -674,11 +679,21 @@ input::placeholder, textarea::placeholder {
   }
   
   .info-card {
-    padding: 2rem;
+    padding: 2rem 1rem;
+    text-align: center;
   }
   
   .popup-card {
-    padding: 2rem;
+    padding: 2rem 1rem;
+    text-align: center;
+  }
+  
+  .admin-item {
+    text-align: center;
+  }
+  
+  .admins-grid {
+    text-align: center;
   }
 }
 
