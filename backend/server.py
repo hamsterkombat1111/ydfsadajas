@@ -1,11 +1,14 @@
 from fastapi import FastAPI, HTTPException, Request, Depends
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 from database import get_db, Visit, BlockedIP, TelegramAdmin, create_tables
 from typing import List, Optional
 import os
 from datetime import datetime
+from pathlib import Path
 
 # Environment variables
 DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://user:password@localhost/prankvz")
