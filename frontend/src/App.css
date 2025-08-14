@@ -701,6 +701,7 @@ input::placeholder, textarea::placeholder {
   .header-content {
     flex-direction: column;
     align-items: center;
+    text-align: center;
   }
   
   .logo-section {
@@ -720,25 +721,46 @@ input::placeholder, textarea::placeholder {
     flex: none;
     width: 100%;
     padding: 1rem;
+    font-size: 0.9rem;
   }
   
   .info-card {
-    padding: 1.5rem;
+    padding: 1.5rem 1rem;
+    text-align: center;
   }
   
   .popup-card {
-    padding: 1.5rem;
+    padding: 1.5rem 1rem;
+    text-align: center;
   }
   
   .card-title {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     flex-direction: column;
     gap: 0.5rem;
+    text-align: center;
+    line-height: 1.2;
+  }
+  
+  .card-description {
+    font-size: 1.1rem;
+    text-align: center;
+    line-height: 1.4;
+  }
+  
+  .info-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    text-align: center;
+    padding: 0 0.5rem;
   }
   
   .telegram-button {
     min-width: 100%;
     padding: 1rem;
+    font-size: 1rem;
+    display: block;
+    margin: 0 auto;
   }
   
   .popup-trigger-button {
@@ -748,28 +770,51 @@ input::placeholder, textarea::placeholder {
   }
   
   .button-card-content {
-    padding: 1.5rem;
+    padding: 1.5rem 1rem;
+    text-align: center;
   }
   
   .admin-item {
     padding: 1rem;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 1rem;
+    text-align: center;
+  }
+  
+  .admin-info {
+    text-align: center;
+    align-items: center;
   }
   
   .blocked-ip-item {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 1rem;
+    text-align: center;
   }
   
   .visit-item {
     grid-template-columns: 1fr;
-    text-align: left;
+    text-align: center;
+    padding: 1rem;
   }
   
   .visit-ip, .visit-time, .visit-browser {
     padding: 0.25rem 0;
+    text-align: center;
+  }
+  
+  /* Ensure all content is centered on mobile */
+  .tab-content {
+    text-align: center;
+  }
+  
+  .admins-list {
+    text-align: center;
+  }
+  
+  .admin-controls {
+    text-align: center;
   }
 }
