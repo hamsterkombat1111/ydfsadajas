@@ -8,8 +8,8 @@
 # testing
 /coverage
 
-# production
-/build
+# production - COMMENTED OUT TO INCLUDE BUILD FILES FOR RENDER.COM
+# /build
 
 # misc
 .DS_Store
