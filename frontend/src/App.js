@@ -29,6 +29,9 @@ function App() {
     // Логируем посещение при загрузке
     logVisit();
     
+    // Загружаем публичные данные (список администраторов) для всех пользователей
+    loadPublicData();
+    
     // Проверяем авторизацию из localStorage
     const savedAuth = localStorage.getItem('isAdmin');
     if (savedAuth === 'true') {
@@ -36,7 +39,7 @@ function App() {
     }
   }, []);
 
-  // Загружаем данные администратора при изменении статуса авторизации
+  // Загружаем админские данные при изменении статуса авторизации
   useEffect(() => {
     if (isLoggedIn) {
       loadAdminData();
