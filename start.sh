@@ -1,7 +1,12 @@
 #!/bin/bash
 
+# Install Node.js dependencies and build React app
+cd frontend
+yarn install
+yarn build
+
 # Install backend dependencies
-cd backend
+cd ../backend
 pip install -r requirements.txt
 
 # Start the FastAPI server
